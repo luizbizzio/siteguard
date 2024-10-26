@@ -42,7 +42,7 @@ Dev Tools Blocker is your ultimate **JavaScript** tool for protecting web conten
  * Repository: https://github.com/luizbizzio/dev-tools-blocker
  * Published: 2024-10-26
  * -------------------------------------------------------------------------- */
-function af(){var e=!1;setInterval((function(){var t=performance.now();console.profile(),console.profileEnd(),console.clear&&console.clear(),e=10<performance.now()-t&&!e&&!(document.documentElement.innerHTML="")}),50)}af(),document.addEventListener("dragstart",(e=>e.preventDefault())),document.addEventListener("contextmenu",(function(e){e.preventDefault()})),document.addEventListener("auxclick",(e=>1===e.button&&(e.stopPropagation(),e.preventDefault()))),document.onkeydown=e=>{[{ctrl:!0,shift:!0,code:"KeyI"},{ctrl:!0,shift:!0,code:"KeyJ"},{ctrl:!0,shift:!0,code:"KeyV"},{ctrl:!0,code:"KeyU"},{code:"F12"}].some((t=>!!t.ctrl===e.ctrlKey&&!!t.shift===e.shiftKey&&e.code===t.code))&&e.preventDefault()},document.body.style.userSelect="none";
+function af(){var e=!1;setInterval((function(){var t=performance.now();console.profile(),console.profileEnd(),console.clear&&console.clear(),e=10<performance.now()-t&&!e&&!(document.documentElement.innerHTML="")}),50)}af(),document.addEventListener("dragstart",(e=>e.preventDefault())),document.addEventListener("auxclick",(e=>1===e.button&&(e.stopPropagation(),e.preventDefault()))),document.addEventListener("contextmenu",(function(e){e.preventDefault()})),document.onkeydown=e=>{[{ctrl:!0,shift:!0,code:"KeyI"},{ctrl:!0,shift:!0,code:"KeyJ"},{ctrl:!0,shift:!0,code:"KeyV"},{ctrl:!0,code:"KeyU"},{code:"F12"}].some((t=>!!t.ctrl===e.ctrlKey&&!!t.shift===e.shiftKey&&e.code===t.code))&&e.preventDefault()},document.body.style.userSelect="none";
 </script>
 ```
 <br>
