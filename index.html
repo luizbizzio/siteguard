@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample HTML Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        p {
+            line-height: 1.6;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label, input, textarea, select, button {
+            display: block;
+            margin: 5px 0;
+            width: 100%;
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to the Sample HTML Page</h1>
+    <p>This is a simple HTML page created to test various HTML elements. You can add more content as needed for testing purposes.</p>
+
+    <h2>Sample Image</h2>
+    <img src="https://via.placeholder.com/600x300" alt="Sample Image">
+
+    <h2>Sample Table</h2>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+        <tr>
+            <td>Sample Item 1</td>
+            <td>This is a description for item 1.</td>
+            <td>$10.00</td>
+        </tr>
+        <tr>
+            <td>Sample Item 2</td>
+            <td>This is a description for item 2.</td>
+            <td>$20.00</td>
+        </tr>
+        <tr>
+            <td>Sample Item 3</td>
+            <td>This is a description for item 3.</td>
+            <td>$30.00</td>
+        </tr>
+    </table>
+
+    <h2>Sample List</h2>
+    <ul>
+        <li>First item in the list</li>
+        <li>Second item in the list</li>
+        <li>Third item in the list</li>
+    </ul>
+
+    <h2>Sample Form</h2>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4"></textarea>
+
+        <label for="option">Select an option:</label>
+        <select id="option" name="option">
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+        </select>
+
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>
