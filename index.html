@@ -9,27 +9,45 @@
             font-family: Arial, sans-serif;
             margin: 20px;
             text-align: center;
+            background-color: #333;
+            color: #f9f9f9;
         }
         h1 {
             color: #d9534f;
         }
         p {
             font-size: 1.2em;
-            color: #333;
         }
         .content {
-            background-color: #f9f9f9;
+            background-color: #2e2e2e;
             border: 1px solid #ddd;
             padding: 20px;
             margin: 20px auto;
             width: 80%;
             max-width: 700px;
         }
-        img {
+        .image-container {
+            position: relative;
+            display: inline-block;
+            text-align: center;
+        }
+        .image-container img {
             max-width: 100%;
             height: auto;
             border: 2px solid #333;
-            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .image-container .background-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2em;
+            color: rgba(255, 255, 255, 0.3);
+            font-weight: bold;
+            text-align: center;
+            z-index: 0;
         }
     </style>
 </head>
@@ -40,7 +58,10 @@
 
     <div class="content">
         <h2>Secret Image</h2>
-        <img src="sample-image.jpg" alt="Secret Content Image">
+        <div class="image-container">
+            <span class="background-text">YOU FOUND IT!<br>TELL ME HOW...<br></span>
+            <img src="sample-image.jpg" alt="Secret Content Image">
+        </div>
         
         <h2>Confidential Text</h2>
         <p>This text is top-secret! Attempt to select, copy, or inspect it if you dare.</p>
@@ -53,7 +74,6 @@
         </ul>
     </div>
 
-    <!-- Dev Tools Blocker Script -->
     <script>
     /*!-----------------------------------------------------------------------------
      * Dev Tools Blocker - Version 1.1.0
