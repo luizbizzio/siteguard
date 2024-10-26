@@ -28,6 +28,9 @@ document.addEventListener("contextmenu", function(e) {
     e.preventDefault()
 });
 
+// Block Middle-click from opening new tabs and images
+document.addEventListener("auxclick",(t=>1===t.button&&(t.stopPropagation(),t.preventDefault())));
+
 // Block Key Combinations
 document.onkeydown = c => {
     // Check if any of the blocked key combinations are pressed
@@ -54,3 +57,4 @@ document.onkeydown = c => {
 
 // Prevent text selection on the entire body of the document
 document.body.style.userSelect = "none";
+
