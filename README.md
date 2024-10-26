@@ -10,6 +10,12 @@
 
 Dev Tools Blocker is your ultimate **JavaScript** tool for protecting web content! Safeguard your intellectual property by preventing unauthorized access and interactions on your website. With Dev Tools Blocker, you can maintain control over your content and deter unwanted actions.
 
+## Test the Features! 🕵️‍♂️
+
+[**Try to Steal This Content!** 😈](https://luizbizzio.github.io/dev-tools-blocker/)
+
+**Challenge:** Test the Dev Tools Blocker's capabilities! Try to copy, save, or inspect the content on this page. Think you can bypass it? Give it a shot! 🔒
+
 ## Features 🌟
 
 | Feature | Description | Status |
