@@ -6,7 +6,7 @@
  * Published: 2024-10-26
  * -------------------------------------------------------------------------- */
 
-// Dev Tools Detector
+// 1. Dev Tools Detector
 function af() {
     var n = !1;
     setInterval(function() {
@@ -20,18 +20,18 @@ function af() {
 
 af();
 
-// Prevent users from dragging elements
+// 2. Prevent users from dragging elements
 document.addEventListener("dragstart", e => e.preventDefault()),
 
-// Disable Right-click context menu
+// 3. Block Middle-click from opening new tabs and images
+document.addEventListener("auxclick",(t=>1===t.button&&(t.stopPropagation(),t.preventDefault())));
+
+// 4. Disable Right-click context menu
 document.addEventListener("contextmenu", function(e) {
     e.preventDefault()
 });
 
-// Block Middle-click from opening new tabs and images
-document.addEventListener("auxclick",(t=>1===t.button&&(t.stopPropagation(),t.preventDefault())));
-
-// Block Key Combinations
+// 5. Block Key Combinations
 document.onkeydown = c => {
     // Check if any of the blocked key combinations are pressed
     [{
@@ -55,6 +55,5 @@ document.onkeydown = c => {
     && c.preventDefault()
 };
 
-// Prevent text selection on the entire body of the document
+// 6. Prevent text selection on the entire body of the document
 document.body.style.userSelect = "none";
-
