@@ -22,6 +22,7 @@ Dev Tools Blocker is your ultimate **JavaScript** tool for protecting web conten
 | ------- | ----------- | ------ |
 | 📅 Dev Tools Detection | Monitors for Developer Tools and clears content if detected. | ✅ Active |
 | 🔍 Prevent Dragging Elements | Disables dragging of elements to maintain content integrity. | ✅ Active |
+| 🚧 Block Middle-click | Disable Middle-click from opening new tabs and images. | ✅ Active |
 | 🚫 Disable Right-Click Menu | Prevents the context menu from appearing to reduce content theft. | ✅ Active |
 | 🔒 Block Key Combinations | Stops users from opening developer tools and the JavaScript console using shortcuts. | ✅ Active |
 | 🛑 Prevent Text Selection | Disables text selection on your web pages, making copying difficult. | ✅ Active |
@@ -41,7 +42,7 @@ Dev Tools Blocker is your ultimate **JavaScript** tool for protecting web conten
  * Repository: https://github.com/luizbizzio/dev-tools-blocker
  * Published: 2024-10-26
  * -------------------------------------------------------------------------- */
-function af(){var e=!1;setInterval(function(){var t=performance.now();console.profile(),console.profileEnd(),console.clear&&console.clear(),e=10<performance.now()-t&&!e&&(document.documentElement.innerHTML="",!0)},50)}af(),document.addEventListener("dragstart",e=>e.preventDefault()),document.addEventListener("contextmenu",function(e){e.preventDefault()}),document.onkeydown=e=>{[{ctrl:!0,shift:!0,code:"KeyI"},{ctrl:!0,shift:!0,code:"KeyJ"},{ctrl:!0,shift:!0,code:"KeyV"},{ctrl:!0,code:"KeyU"},{code:"F12"}].some(t=>!!t.ctrl===e.ctrlKey&&!!t.shift===e.shiftKey&&e.code===t.code)&&e.preventDefault()},document.body.style.userSelect="none";
+function af(){var e=!1;setInterval((function(){var t=performance.now();console.profile(),console.profileEnd(),console.clear&&console.clear(),e=10<performance.now()-t&&!e&&!(document.documentElement.innerHTML="")}),50)}af(),document.addEventListener("dragstart",(e=>e.preventDefault())),document.addEventListener("contextmenu",(function(e){e.preventDefault()})),document.addEventListener("auxclick",(e=>1===e.button&&(e.stopPropagation(),e.preventDefault()))),document.onkeydown=e=>{[{ctrl:!0,shift:!0,code:"KeyI"},{ctrl:!0,shift:!0,code:"KeyJ"},{ctrl:!0,shift:!0,code:"KeyV"},{ctrl:!0,code:"KeyU"},{code:"F12"}].some((t=>!!t.ctrl===e.ctrlKey&&!!t.shift===e.shiftKey&&e.code===t.code))&&e.preventDefault()},document.body.style.userSelect="none";
 </script>
 ```
 <br>
@@ -66,7 +67,7 @@ Ensure this script is embedded directly in your HTML, not in a separate file. Th
  * Published: 2024-10-26
  * -------------------------------------------------------------------------- */
 
-// Dev Tools Detector
+// 1. Dev Tools Detector
 function af() {
     var n = !1;
     setInterval(function() {
@@ -80,15 +81,18 @@ function af() {
 
 af();
 
-// Prevent users from dragging elements
+// 2. Prevent users from dragging elements
 document.addEventListener("dragstart", e => e.preventDefault()),
 
-// Disable Right-click context menu
+// 3. Block Middle-click from opening new tabs and images
+document.addEventListener("auxclick",(t=>1===t.button&&(t.stopPropagation(),t.preventDefault())));
+
+// 4. Disable Right-click context menu
 document.addEventListener("contextmenu", function(e) {
     e.preventDefault()
 });
 
-// Block Key Combinations
+// 5. Block Key Combinations
 document.onkeydown = c => {
     // Check if any of the blocked key combinations are pressed
     [{
@@ -112,7 +116,7 @@ document.onkeydown = c => {
     && c.preventDefault()
 };
 
-// Prevent text selection on the entire body of the document
+// 6. Prevent text selection on the entire body of the document
 document.body.style.userSelect = "none";
 </script>
 ```
@@ -144,7 +148,16 @@ To prevent element dragging, a `dragstart` event listener is added:
 
 ---
 
-### 3. Disable Right-Click Menu 🚫
+### 3. Block Middle-Click 🚧
+
+To block the middle-click action, an `auxclick` event listener is used:
+
+- **Execution:** `document.addEventListener("auxclick", e => e.button === 1 && (e.stopPropagation(), e.preventDefault()))`
+- **Functionality:** Prevents middle-click from opening new tabs, limiting potential unintended navigation and reinforcing content access restrictions.
+
+---
+
+### 4. Disable Right-Click Menu 🚫
 
 To block the right-click context menu, a `contextmenu` event listener is used:
 
@@ -153,7 +166,7 @@ To block the right-click context menu, a `contextmenu` event listener is used:
 
 ---
 
-### 4. Block Key Combinations 🔒
+### 5. Block Key Combinations 🔒
 
 This function blocks common shortcuts that open Dev Tools and other inspection options:
 
@@ -163,7 +176,7 @@ This function blocks common shortcuts that open Dev Tools and other inspection o
 
 ---
 
-### 5. Prevent Text Selection 🛑
+### 6. Prevent Text Selection 🛑
 
 To prevent text selection across the page, the `userSelect` property of `document.body` is set to `"none"`:
 
