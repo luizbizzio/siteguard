@@ -1,20 +1,20 @@
-# Dev Tools Blocker 🚫
+# SiteGuard 🚫
 
 **Version:** 1.1.0  
 **Author:** Luiz Bizzio  
 **License:** MIT  
-**Repository:** [GitHub - Dev Tools Blocker](https://github.com/luizbizzio/dev-tools-blocker)  
+**Repository:** [GitHub - SiteGuard](https://github.com/luizbizzio/siteguard)  
 **Published:** 2024-10-26  
 
 ## Overview 🚀
 
-Dev Tools Blocker is your ultimate **JavaScript** tool for protecting web content! Safeguard your intellectual property by preventing unauthorized access and interactions on your website. With Dev Tools Blocker, you can maintain control over your content and deter unwanted actions.
+SiteGuard is your ultimate **JavaScript** tool for protecting web content! Safeguard your intellectual property by preventing unauthorized access and interactions on your website. With SiteGuard, you can maintain control over your content and deter unwanted actions.
 
 ## Test the Features! 🕵️‍♂️
 
-[**Try to Steal This Content!** 😈](https://luizbizzio.github.io/dev-tools-blocker/)
+[**Try to Steal This Content!** 😈](https://luizbizzio.github.io/siteguard/)
 
-**Challenge:** Test the Dev Tools Blocker's capabilities! Try to copy, save, or inspect the content on this page. Think you can bypass it? Give it a shot! 🔒
+**Challenge:** Test the SiteGuard's capabilities! Try to copy, save, or inspect the content on this page. Think you can bypass it? Give it a shot! 🔒
 
 ## Features 🌟
 
@@ -36,10 +36,10 @@ Dev Tools Blocker is your ultimate **JavaScript** tool for protecting web conten
 ```html
 <script>
 /*!-----------------------------------------------------------------------------
- * Dev Tools Blocker - Version 1.1.0
+ * SiteGuard - Version 1.1.0
  * Author: Luiz Bizzio
  * License: MIT
- * Repository: https://github.com/luizbizzio/dev-tools-blocker
+ * Repository: https://github.com/luizbizzio/siteguard
  * Published: 2024-10-26
  * -------------------------------------------------------------------------- */
 function af(){var e=!1;setInterval((function(){var t=performance.now();console.profile(),console.profileEnd(),console.clear&&console.clear(),e=10<performance.now()-t&&!e&&!(document.documentElement.innerHTML="")}),50)}af(),document.addEventListener("dragstart",(e=>e.preventDefault())),document.addEventListener("auxclick",(e=>1===e.button&&(e.stopPropagation(),e.preventDefault()))),document.addEventListener("contextmenu",(function(e){e.preventDefault()})),document.onkeydown=e=>{[{ctrl:!0,shift:!0,code:"KeyI"},{ctrl:!0,shift:!0,code:"KeyJ"},{ctrl:!0,shift:!0,code:"KeyV"},{ctrl:!0,code:"KeyU"},{code:"F12"}].some((t=>!!t.ctrl===e.ctrlKey&&!!t.shift===e.shiftKey&&e.code===t.code))&&e.preventDefault()},document.body.style.userSelect="none";
@@ -60,10 +60,10 @@ Ensure this script is embedded directly in your HTML, not in a separate file. Th
 ```html
 <script>
 /*!-----------------------------------------------------------------------------
- * Dev Tools Blocker - Version 1.1.0
+ * SiteGuard - Version 1.1.0
  * Author: Luiz Bizzio
  * License: MIT
- * Repository: https://github.com/luizbizzio/dev-tools-blocker
+ * Repository: https://github.com/luizbizzio/siteguard
  * Published: 2024-10-26
  * -------------------------------------------------------------------------- */
 
