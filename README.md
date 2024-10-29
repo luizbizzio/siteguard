@@ -1,4 +1,4 @@
-# SiteGuard 🚫
+# SiteGuard 🛡️
 
 **Version:** 1.1.0  
 **Author:** Luiz Bizzio  
