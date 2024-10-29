@@ -1,8 +1,8 @@
 /*!-----------------------------------------------------------------------------
- * Dev Tools Blocker - Version 1.1.0
+ * SiteGuard - Version 1.1.0
  * Author: Luiz Bizzio
  * License: MIT
- * Repository: https://github.com/luizbizzio/dev-tools-blocker
+ * Repository: https://github.com/luizbizzio/SiteGuard
  * Published: 2024-10-26
  * -------------------------------------------------------------------------- */
 
