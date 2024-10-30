@@ -2,7 +2,7 @@
  * SiteGuard - Version 1.1.0
  * Author: Luiz Bizzio
  * License: MIT
- * Repository: https://github.com/luizbizzio/SiteGuard
+ * Repository: https://github.com/luizbizzio/siteguard
  * Published: 2024-10-26
  * -------------------------------------------------------------------------- */
 
