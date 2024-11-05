@@ -6,50 +6,45 @@
  * Published: 2024-11-05
  * -------------------------------------------------------------------------- */
 
-// 1. Function to detect DevTools and clear content
+// Dev Tools Detector
 function af() {
-    var e = !1; // Variable to track if the DevTools have been detected
+    var e = !1; // Initializes a variable to track the detection of DevTools
     setInterval(function() {
-        var t = performance.now(); // Get the current timestamp
-        console.profile(); // Start profiling for performance
-        console.profileEnd(); // End profiling
-        console.clear && console.clear(); // Clear the console if supported
+        var t = performance.now(); // Gets the current time in milliseconds
+        console.profile(); // Starts a profiling session for performance analysis
+        console.profileEnd(); // Ends the profiling session
+        console.clear && console.clear(); // Clears the console if supported
         
-        // Detect if DevTools are opened by checking the performance
-        // If more than 10 milliseconds have passed since the last check and DevTools are not detected yet
-        if (performance.now() - t > 10 && !e) {
-            e = !0; // Set the variable to true, indicating DevTools are detected
-            document.documentElement.innerHTML = ""; // Clear the entire document content
-            location.reload(true); // Attempt to reload the page without cache
-        }
-    }, 1); // Check every millisecond
+        // Detects if the developer tools are open
+        e = 10 < performance.now() - t && !e && (document.documentElement.innerHTML = "", !0);
+    }, 1); // Executes the function every millisecond
 }
 
-af(); // Invoke the function to start the detection
+af(); // Invokes the function to start detection
 
-// 2. Prevent users from dragging elements
-document.addEventListener("dragstart", e => e.preventDefault()); // Prevent default drag behavior
+// 1. Prevents users from dragging elements
+document.addEventListener("dragstart", e => e.preventDefault()); // Prevents the default drag behavior
 
-// 3. Block Middle-click from opening new tabs and images
-document.addEventListener("auxclick", (e) => {
-    if (1 === e.button) { // Check if the middle mouse button was clicked
-        e.stopPropagation(); // Stop the event from bubbling up
-        e.preventDefault(); // Prevent the default action (e.g., opening a new tab)
+// 2. Blocks middle mouse button clicks
+document.addEventListener("auxclick", e => {
+    if (1 === e.button) { // Checks if the middle mouse button was clicked
+        e.stopPropagation(); // Prevents the event from bubbling up
+        e.preventDefault(); // Prevents the default action
     }
 });
 
-// 4. Disable Right-click context menu
+// 3. Disables the context menu (right-click)
 document.addEventListener("contextmenu", function(e) {
-    e.preventDefault(); // Prevent the right-click context menu from appearing
+    e.preventDefault(); // Prevents the context menu from appearing
 });
 
-// 5. Block Key Combinations
+// 4. Blocks key combinations
 document.onkeydown = e => {
-    // List of key combinations to block
+    // Defines an array of key combinations to block
     [{
         ctrl: !0,
         shift: !0,
-        code: "KeyI" // Ctrl + Shift + I for Developer tools
+        code: "KeyI" // Ctrl + Shift + I for Developer Tools
     }, {
         ctrl: !0,
         shift: !0,
@@ -75,12 +70,29 @@ document.onkeydown = e => {
         ctrl: !0,
         code: "KeyJ" // Ctrl + J for downloads
     }, {
-        code: "F12" // F12 for Developer tools
-    }].some(t => !!t.ctrl === e.ctrlKey && !!t.shift === e.shiftKey && e.code === t.code) // Check if any combination matches
-    && e.preventDefault(); // Prevent the default action if a match is found
+        ctrl: !0,
+        code: "KeyF" // Ctrl + F for find
+    }, {
+        code: "F12" // F12 for Developer Tools
+    }].some(t => !!t.ctrl === e.ctrlKey && !!t.shift === e.shiftKey && e.code === t.code) && e.preventDefault();
 };
 
-// 6. Prevent text selection on the entire body of the document
+// 5. Prevents text selection on the entire body of the document
 document.addEventListener("DOMContentLoaded", function() {
-    document.body.style.userSelect = "none"; // Disable text selection for the entire body
+    // Sets the user-select property to none to disable text selection
+    document.body.style.setProperty('user-select', 'none', 'important');
+
+    // Style to hide all content during printing
+    const printStyle = document.createElement("style");
+    printStyle.type = "text/css";
+    printStyle.media = "print";
+    printStyle.innerHTML = "* { display: none !important; }"; // Hides all content during print
+    document.head.appendChild(printStyle);
+
+    // Style to disable text selection for various browsers
+    const selectTextCss = document.createElement("style");
+    selectTextCss.type = "text/css";
+    selectTextCss.innerHTML = "body {-webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}"; // Prevents text selection
+    document.head.appendChild(selectTextCss);
 });
+
