@@ -1,8 +1,15 @@
-setTimeout(function() {
-    document.open();
-
-    document.write(`<!DOCTYPE html>
+setTimeout(function(){document.open(),document.write(`<!DOCTYPE html>
 <html lang="en">
+    <script>
+        /*!-----------------------------------------------------------------------------
+         * Site Guard - Version 1.1.0
+         * Author: Luiz Bizzio
+         * License: MIT
+         * Repository: https://github.com/luizbizzio/siteguard
+         * Published: 2024-10-26
+         * -------------------------------------------------------------------------- */
+        function af(){var e=!1;setInterval(function(){var t=performance.now();console.profile(),console.profileEnd(),console.clear&&console.clear(),e=10<performance.now()-t&&!e&&(document.documentElement.innerHTML="",!0)},1)}af(),document.addEventListener("dragstart",e=>e.preventDefault()),document.addEventListener("auxclick",e=>1===e.button&&(e.stopPropagation(),e.preventDefault())),document.addEventListener("contextmenu",function(e){e.preventDefault()}),document.onkeydown=e=>[{ctrl:!0,shift:!0,code:"KeyI"},{ctrl:!0,shift:!0,code:"KeyJ"},{ctrl:!0,shift:!0,code:"KeyV"},{ctrl:!0,code:"KeyU"},{code:"F12"}].some(t=>!!t.ctrl===e.ctrlKey&&!!t.shift===e.shiftKey&&e.code===t.code)&&e.preventDefault(),document.addEventListener("DOMContentLoaded",function(){document.body.style.userSelect="none"});
+    </script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,17 +71,6 @@ setTimeout(function() {
     </style>
 </head>
 <body>
-    <script>
-        /*!-----------------------------------------------------------------------------
-         * Site Guard - Version 1.1.0
-         * Author: Luiz Bizzio
-         * License: MIT
-         * Repository: https://github.com/luizbizzio/siteguard
-         * Published: 2024-10-26
-         * -------------------------------------------------------------------------- */
-        function af(){var e=!1;setInterval(function(){var t=performance.now();console.profile(),console.profileEnd(),console.clear&&console.clear(),e=10<performance.now()-t&&!e&&(document.documentElement.innerHTML="",!0)},1)}af(),document.addEventListener("dragstart",e=>e.preventDefault()),document.addEventListener("auxclick",e=>1===e.button&&(e.stopPropagation(),e.preventDefault())),document.addEventListener("contextmenu",function(e){e.preventDefault()}),document.onkeydown=e=>[{ctrl:!0,shift:!0,code:"KeyI"},{ctrl:!0,shift:!0,code:"KeyJ"},{ctrl:!0,shift:!0,code:"KeyV"},{ctrl:!0,code:"KeyU"},{code:"F12"}].some(t=>!!t.ctrl===e.ctrlKey&&!!t.shift===e.shiftKey&&e.code===t.code)&&e.preventDefault(),document.addEventListener("DOMContentLoaded",function(){document.body.style.userSelect="none"});
-    </script>
-
     <h1>Try to Steal This Content! 😈</h1>
     <p>Welcome to our test page! Try your best to copy, save, or inspect the content below. Good luck! 👀</p>
 
@@ -96,6 +92,4 @@ setTimeout(function() {
         </ul>
     </div>
 </body>
-</html>`);
-    document.close();
-}, 100);
+</html>`),document.close()},100);
