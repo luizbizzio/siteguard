@@ -47,7 +47,7 @@ function af(){var e=!1;setInterval(function(){var t=performance.now();console.pr
 <br>
 
 ### **IMPORTANT ⚠** 
-Ensure this script is embedded directly before the "head" tag at the very beginning of your HTML, not in a separate file. This prevents users from easily blocking the script and ensures no traces remain if content is auto-cleared.
+Ensure this script is embedded directly at the very beginning of the `<html>` tag, before the `<head>` tag. This prevents users from easily blocking the script and ensures no traces remain if content is auto-cleared.
 
 <br>
 
