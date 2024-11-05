@@ -81,7 +81,7 @@ setTimeout(function() {
     <div class="content">
         <h2>Secret Image</h2>
         <div class="image-container">
-            <span class="background-text">YOU FOUND IT!<br>TELL ME HOW...<br></span>
+            <span class="background-text">#2 YOU FOUND IT!<br>TELL ME HOW...<br></span>
             <img src="sample-image.jpg" alt="Secret Content Image" class="foreground-image" loading="lazy">
         </div>        
         
