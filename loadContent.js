@@ -77,7 +77,7 @@ function af(){var e=!1;setInterval(function(){var t=performance.now();console.pr
         <h2>Secret Image</h2>
         <div class="image-container">
             <span class="background-text">#2 YOU FOUND IT!<br>TELL ME HOW...<br></span>
-            <img src="img/sample-image.jpg" alt="Secret Content Image" class="foreground-image" loading="lazy">
+            <img src="sample-image.jpg" alt="Secret Content Image" class="foreground-image" loading="lazy">
         </div>        
         
         <h2>Confidential Text</h2>
