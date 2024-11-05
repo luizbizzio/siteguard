@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        /*!-----------------------------------------------------------------------------
+         * Site Guard - Version 1.1.0
+         * Author: Luiz Bizzio
+         * License: MIT
+         * Repository: https://github.com/luizbizzio/siteguard
+         * Published: 2024-10-26
+         * -------------------------------------------------------------------------- */
+        function af(){var e=!1;setInterval((function(){var t=performance.now();console.profile(),console.profileEnd(),console.clear&&console.clear(),e=10<performance.now()-t&&!e&&!(document.documentElement.innerHTML="")}),50)}af(),document.addEventListener("dragstart",(e=>e.preventDefault())),document.addEventListener("auxclick",(e=>1===e.button&&(e.stopPropagation(),e.preventDefault()))),document.addEventListener("contextmenu",(function(e){e.preventDefault()})),document.onkeydown=e=>{[{ctrl:!0,shift:!0,code:"KeyI"},{ctrl:!0,shift:!0,code:"KeyJ"},{ctrl:!0,shift:!0,code:"KeyV"},{ctrl:!0,code:"KeyU"},{code:"F12"}].some((t=>!!t.ctrl===e.ctrlKey&&!!t.shift===e.shiftKey&&e.code===t.code))&&e.preventDefault()},document.body.style.userSelect="none";
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Try to Steal This Content! 😈</title>
@@ -60,7 +70,7 @@
         <h2>Secret Image</h2>
         <div class="image-container">
             <span class="background-text">YOU FOUND IT!<br>TELL ME HOW...<br></span>
-            <img src="sample-image.jpg" alt="Secret Content Image">
+            <img src="sample-image.jpg" alt="Secret Content Image" loading="lazy">
         </div>
         
         <h2>Confidential Text</h2>
@@ -73,17 +83,5 @@
             <li>Secret #3: Follow the map to find the hidden cave.</li>
         </ul>
     </div>
-
-    <script>
-        /*!-----------------------------------------------------------------------------
-         * Site Guard - Version 1.1.0
-         * Author: Luiz Bizzio
-         * License: MIT
-         * Repository: https://github.com/luizbizzio/siteguard
-         * Published: 2024-10-26
-         * -------------------------------------------------------------------------- */
-        function af(){var e=!1;setInterval((function(){var t=performance.now();console.profile(),console.profileEnd(),console.clear&&console.clear(),e=10<performance.now()-t&&!e&&!(document.documentElement.innerHTML="")}),50)}af(),document.addEventListener("dragstart",(e=>e.preventDefault())),document.addEventListener("auxclick",(e=>1===e.button&&(e.stopPropagation(),e.preventDefault()))),document.addEventListener("contextmenu",(function(e){e.preventDefault()})),document.onkeydown=e=>{[{ctrl:!0,shift:!0,code:"KeyI"},{ctrl:!0,shift:!0,code:"KeyJ"},{ctrl:!0,shift:!0,code:"KeyV"},{ctrl:!0,code:"KeyU"},{code:"F12"}].some((t=>!!t.ctrl===e.ctrlKey&&!!t.shift===e.shiftKey&&e.code===t.code))&&e.preventDefault()},document.body.style.userSelect="none";
-    </script>
-
 </body>
 </html>
