@@ -1,68 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
  <script>
-        /*!-----------------------------------------------------------------------------
-         * Site Guard - Version 1.1.0
-         * Author: Luiz Bizzio
-         * License: MIT
-         * Repository: https://github.com/luizbizzio/siteguard
-         * Published: 2024-10-26
-         * -------------------------------------------------------------------------- */
-        let devToolsOpened = false;
-
-        function detectDevTools() {
-            var e = false;
-            setInterval(function() {
-                var t = performance.now();
-                console.profile();
-                console.profileEnd();
-                console.clear && console.clear();
-                if (performance.now() - t > 10 && !e) {
-                    e = true;
-                    document.documentElement.innerHTML = "";
-                    location.reload();
-                    devToolsOpened = true;
-                }
-            }, 1);
-        }
-
-        detectDevTools();
-
-        // Impede o carregamento de loadContent.js se DevTools estiver ativo
-        setTimeout(function() {
-            if (!devToolsOpened) {
-                // Carrega o script loadContent.js apenas se DevTools não foi aberto
-                const script = document.createElement('script');
-                script.src = 'loadContent.js';
-                document.body.appendChild(script);
-            }
-        }, 100); // 100ms de atraso para carregar o script
-
-        document.addEventListener("dragstart", e => e.preventDefault());
-        document.addEventListener("auxclick", e => {
-            if (e.button === 1) {
-                e.stopPropagation();
-                e.preventDefault();
-            }
-        });
-
-        document.addEventListener("contextmenu", function(e) {
-            e.preventDefault();
-        });
-
-        document.onkeydown = e => {
-            [{ ctrl: true, shift: true, code: "KeyI" },
-             { ctrl: true, shift: true, code: "KeyJ" },
-             { ctrl: true, shift: true, code: "KeyV" },
-             { ctrl: true, code: "KeyU" },
-             { code: "F12" }]
-            .some(t => !!t.ctrl === e.ctrlKey && !!t.shift === e.shiftKey && e.code === t.code) && e.preventDefault();
-        };
-
-        document.addEventListener("DOMContentLoaded", function() {
-            document.body.style.userSelect = "none";
-        });
-    </script>    
+   devToolsOpened=!1;function detectDevTools(){var e=!1;setInterval(function(){var t=performance.now();console.profile(),console.profileEnd(),console.clear&&console.clear(),performance.now()-t>10&&!e&&(e=!0,document.documentElement.innerHTML="",location.reload(),devToolsOpened=!0)},1)}detectDevTools(),setTimeout(function(){if(!devToolsOpened){let e=document.createElement("script");e.src="loadContent.js",document.body.appendChild(e)}},100),document.addEventListener("dragstart",e=>e.preventDefault()),document.addEventListener("auxclick",e=>{1===e.button&&(e.stopPropagation(),e.preventDefault())}),document.addEventListener("contextmenu",function(e){e.preventDefault()}),document.onkeydown=e=>{[{ctrl:!0,shift:!0,code:"KeyI"},{ctrl:!0,shift:!0,code:"KeyJ"},{ctrl:!0,shift:!0,code:"KeyV"},{ctrl:!0,code:"KeyU"},{code:"F12"}].some(t=>!!t.ctrl===e.ctrlKey&&!!t.shift===e.shiftKey&&e.code===t.code)&&e.preventDefault()},document.addEventListener("DOMContentLoaded",function(){document.body.style.userSelect="none"});
+ </script>    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
