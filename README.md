@@ -41,8 +41,8 @@ SiteGuard is your ultimate **JavaScript** tool for protecting web content! Safeg
  * Repository: https://github.com/luizbizzio/siteguard
  * Published: 2024-11-05
  * -------------------------------------------------------------------------- */
-function af(){var e=!1;setInterval(function(){var t=performance.now();console.profile(),console.profileEnd(),console.clear&&console.clear(),performance.now()-t>10&&!e&&(e=!0,document.documentElement.innerHTML="",location.reload(!0))},1e3)}af(),document.addEventListener("dragstart",e=>e.preventDefault()),document.addEventListener("auxclick",e=>1===e.button&&(e.stopPropagation(),e.preventDefault())),document.addEventListener("contextmenu",function(e){e.preventDefault()}),document.onkeydown=e=>[{ctrl:!0,shift:!0,code:"KeyI"},{ctrl:!0,shift:!0,code:"KeyJ"},{ctrl:!0,shift:!0,code:"KeyV"},{ctrl:!0,code:"KeyU"},{code:"F12"}].some(t=>!!t.ctrl===e.ctrlKey&&!!t.shift===e.shiftKey&&e.code===t.code)&&e.preventDefault(),document.addEventListener("DOMContentLoaded",function(){document.body.style.userSelect="none"});
-</script>
+function af(){var e=!1;setInterval(function(){var t=performance.now();console.profile(),console.profileEnd(),console.clear&&console.clear(),e=10<performance.now()-t&&!e&&(document.documentElement.innerHTML="",!0)},1)}af(),document.addEventListener("dragstart",e=>e.preventDefault()),document.addEventListener("auxclick",e=>1===e.button&&(e.stopPropagation(),e.preventDefault())),document.addEventListener("contextmenu",function(e){e.preventDefault()}),document.onkeydown=e=>{[{ctrl:!0,shift:!0,code:"KeyI"},{ctrl:!0,shift:!0,code:"KeyJ"},{ctrl:!0,shift:!0,code:"KeyV"},{ctrl:!0,shift:!0,code:"KeyC"},{ctrl:!0,code:"KeyU"},{ctrl:!0,code:"KeyP"},{ctrl:!0,code:"KeyS"},{ctrl:!0,code:"KeyJ"},{ctrl:!0,code:"KeyF"},{code:"F12"}].some(t=>!!t.ctrl===e.ctrlKey&&!!t.shift===e.shiftKey&&e.code===t.code)&&e.preventDefault()},document.addEventListener("DOMContentLoaded",function(){document.body.style.setProperty("user-select","none","important");let e=document.createElement("style");e.type="text/css",e.media="print",e.innerHTML="* { display: none !important; }",document.head.appendChild(e);let t=document.createElement("style");t.type="text/css",t.innerHTML="body {-webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}",document.head.appendChild(t)});</script>
+
 ```
 <br>
 
@@ -66,64 +66,94 @@ Ensure this script is embedded directly at the very beginning of the `<html>` ta
  * Published: 2024-11-05
  * -------------------------------------------------------------------------- */
 
-// 1. Dev Tools Detector
+// Dev Tools Detector
 function af() {
-    var n = !1;
+    var e = !1; // Initializes a variable to track the detection of DevTools
     setInterval(function() {
-        var e = performance.now();
-        console.profile();
-        console.profileEnd();
-        console.clear && console.clear(); // Clear console
+        var t = performance.now(); // Gets the current time in milliseconds
+        console.profile(); // Starts a profiling session for performance analysis
+        console.profileEnd(); // Ends the profiling session
+        console.clear && console.clear(); // Clears the console if supported
         
-        // Detect DevTools and clear content
-        if (performance.now() - e > 10 && !n) {
-            n = !0;
-            document.documentElement.innerHTML = ""; // Clear document content
-            location.reload(true); // Attempt to reload without cache
-        }
-    }, 1);
+        // Detects if the developer tools are open
+        e = 10 < performance.now() - t && !e && (document.documentElement.innerHTML = "", !0);
+    }, 1); // Executes the function every millisecond
 }
 
-af();
+af(); // Invokes the function to start detection
 
-// 2. Prevent users from dragging elements
-document.addEventListener("dragstart", e => e.preventDefault());
+// 1. Prevents users from dragging elements
+document.addEventListener("dragstart", e => e.preventDefault()); // Prevents the default drag behavior
 
-// 3. Block Middle-click from opening new tabs and images
-document.addEventListener("auxclick",(t=>1===t.button&&(t.stopPropagation(),t.preventDefault())));
-
-// 4. Disable Right-click context menu
-document.addEventListener("contextmenu", function(e) {
-    e.preventDefault()
+// 2. Blocks middle mouse button clicks
+document.addEventListener("auxclick", e => {
+    if (1 === e.button) { // Checks if the middle mouse button was clicked
+        e.stopPropagation(); // Prevents the event from bubbling up
+        e.preventDefault(); // Prevents the default action
+    }
 });
 
-// 5. Block Key Combinations
-document.onkeydown = c => {
-    // Check if any of the blocked key combinations are pressed
+// 3. Disables the context menu (right-click)
+document.addEventListener("contextmenu", function(e) {
+    e.preventDefault(); // Prevents the context menu from appearing
+});
+
+// 4. Blocks key combinations
+document.onkeydown = e => {
+    // Defines an array of key combinations to block
     [{
         ctrl: !0,
         shift: !0,
-        code: "KeyI" // Developer tools
+        code: "KeyI" // Ctrl + Shift + I for Developer Tools
     }, {
         ctrl: !0,
         shift: !0,
-        code: "KeyJ" //JavaScript console
+        code: "KeyJ" // Ctrl + Shift + J for JavaScript console
     }, {
         ctrl: !0,
         shift: !0,
-        code: "KeyV" // Console
+        code: "KeyV" // Ctrl + Shift + V for paste
     }, {
-        ctrl: !0, 
-        code: "KeyU" // Source
+        ctrl: !0,
+        shift: !0,
+        code: "KeyC" // Ctrl + Shift + C for element inspector
     }, {
-        code: "F12" // Developer Tools
-    }].some(e => !!e.ctrl === c.ctrlKey && !!e.shift === c.shiftKey && c.code === e.code)
-    && c.preventDefault()
+        ctrl: !0,
+        code: "KeyU" // Ctrl + U for view source
+    }, {
+        ctrl: !0,
+        code: "KeyP" // Ctrl + P for print
+    }, {
+        ctrl: !0,
+        code: "KeyS" // Ctrl + S for save
+    }, {
+        ctrl: !0,
+        code: "KeyJ" // Ctrl + J for downloads
+    }, {
+        ctrl: !0,
+        code: "KeyF" // Ctrl + F for find
+    }, {
+        code: "F12" // F12 for Developer Tools
+    }].some(t => !!t.ctrl === e.ctrlKey && !!t.shift === e.shiftKey && e.code === t.code) && e.preventDefault();
 };
 
-// 6. Prevent text selection on the entire body of the document
+// 5. Prevents text selection on the entire body of the document
 document.addEventListener("DOMContentLoaded", function() {
-    document.body.style.userSelect = "none";
+    // Sets the user-select property to none to disable text selection
+    document.body.style.setProperty('user-select', 'none', 'important');
+
+    // Style to hide all content during printing
+    const printStyle = document.createElement("style");
+    printStyle.type = "text/css";
+    printStyle.media = "print";
+    printStyle.innerHTML = "* { display: none !important; }"; // Hides all content during print
+    document.head.appendChild(printStyle);
+
+    // Style to disable text selection for various browsers
+    const selectTextCss = document.createElement("style");
+    selectTextCss.type = "text/css";
+    selectTextCss.innerHTML = "body {-webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}"; // Prevents text selection
+    document.head.appendChild(selectTextCss);
 });
 </script>
 ```
