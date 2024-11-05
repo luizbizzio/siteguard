@@ -1,10 +1,10 @@
 # SiteGuard 🛡️
 
-**Version:** 1.1.0  
+**Version:** 1.1.2  
 **Author:** Luiz Bizzio  
 **License:** MIT  
 **Repository:** [GitHub - SiteGuard](https://github.com/luizbizzio/siteguard)  
-**Published:** 2024-10-26  
+**Published:** 2024-11-05 
 
 ## Overview 🚀
 
@@ -36,13 +36,12 @@ SiteGuard is your ultimate **JavaScript** tool for protecting web content! Safeg
 ```html
 <script>
 /*!-----------------------------------------------------------------------------
- * SiteGuard - Version 1.1.0
- * Author: Luiz Bizzio
+ * SiteGuard - Version 1.1.2
  * License: MIT
  * Repository: https://github.com/luizbizzio/siteguard
- * Published: 2024-10-26
+ * Published: 2024-11-05
  * -------------------------------------------------------------------------- */
-function af(){var e=!1;setInterval((function(){var t=performance.now();console.profile(),console.profileEnd(),console.clear&&console.clear(),e=10<performance.now()-t&&!e&&!(document.documentElement.innerHTML="")}),50)}af(),document.addEventListener("dragstart",(e=>e.preventDefault())),document.addEventListener("auxclick",(e=>1===e.button&&(e.stopPropagation(),e.preventDefault()))),document.addEventListener("contextmenu",(function(e){e.preventDefault()})),document.onkeydown=e=>{[{ctrl:!0,shift:!0,code:"KeyI"},{ctrl:!0,shift:!0,code:"KeyJ"},{ctrl:!0,shift:!0,code:"KeyV"},{ctrl:!0,code:"KeyU"},{code:"F12"}].some((t=>!!t.ctrl===e.ctrlKey&&!!t.shift===e.shiftKey&&e.code===t.code))&&e.preventDefault()},document.body.style.userSelect="none";
+function af(){var e=!1;setInterval(function(){var t=performance.now();console.profile(),console.profileEnd(),console.clear&&console.clear(),performance.now()-t>10&&!e&&(e=!0,document.documentElement.innerHTML="",location.reload(!0))},1e3)}af(),document.addEventListener("dragstart",e=>e.preventDefault()),document.addEventListener("auxclick",e=>1===e.button&&(e.stopPropagation(),e.preventDefault())),document.addEventListener("contextmenu",function(e){e.preventDefault()}),document.onkeydown=e=>[{ctrl:!0,shift:!0,code:"KeyI"},{ctrl:!0,shift:!0,code:"KeyJ"},{ctrl:!0,shift:!0,code:"KeyV"},{ctrl:!0,code:"KeyU"},{code:"F12"}].some(t=>!!t.ctrl===e.ctrlKey&&!!t.shift===e.shiftKey&&e.code===t.code)&&e.preventDefault(),document.addEventListener("DOMContentLoaded",function(){document.body.style.userSelect="none"});
 </script>
 ```
 <br>
@@ -60,11 +59,11 @@ Ensure this script is embedded directly before the "head" tag at the very beginn
 ```html
 <script>
 /*!-----------------------------------------------------------------------------
- * SiteGuard - Version 1.1.0
+ * SiteGuard - Version 1.1.2
  * Author: Luiz Bizzio
  * License: MIT
  * Repository: https://github.com/luizbizzio/siteguard
- * Published: 2024-10-26
+ * Published: 2024-11-05
  * -------------------------------------------------------------------------- */
 
 // 1. Dev Tools Detector
@@ -75,14 +74,20 @@ function af() {
         console.profile();
         console.profileEnd();
         console.clear && console.clear(); // Clear console
-        n = 10 < performance.now() - e && !n && !(document.documentElement.innerHTML = ""); // Clear document content
-    }, 50);
+        
+        // Detect DevTools and clear content
+        if (performance.now() - e > 10 && !n) {
+            n = !0;
+            document.documentElement.innerHTML = ""; // Clear document content
+            location.reload(true); // Attempt to reload without cache
+        }
+    }, 1);
 }
 
 af();
 
 // 2. Prevent users from dragging elements
-document.addEventListener("dragstart", e => e.preventDefault()),
+document.addEventListener("dragstart", e => e.preventDefault());
 
 // 3. Block Middle-click from opening new tabs and images
 document.addEventListener("auxclick",(t=>1===t.button&&(t.stopPropagation(),t.preventDefault())));
@@ -117,7 +122,9 @@ document.onkeydown = c => {
 };
 
 // 6. Prevent text selection on the entire body of the document
-document.body.style.userSelect = "none";
+document.addEventListener("DOMContentLoaded", function() {
+    document.body.style.userSelect = "none";
+});
 </script>
 ```
 
