@@ -26,6 +26,7 @@ SiteGuard is your ultimate **JavaScript** tool for protecting web content! Safeg
 | 🚫 Disable Right-Click Menu | Prevents the context menu from appearing to reduce content theft. | ✅ Active |
 | 🔒 Block Key Combinations | Stops users from opening developer tools and the JavaScript console using shortcuts. | ✅ Active |
 | 🛑 Prevent Text Selection | Disables text selection on your web pages, making copying difficult. | ✅ Active |
+| 🖨️ Hide Content During Print | Hides all content when the user attempts to print the page. | ✅ Active |
 
 ## How to Use 🔧
 
@@ -219,6 +220,19 @@ To prevent text selection across the page, the `userSelect` property of `documen
 
 - **Execution:** `document.body.style.userSelect = "none"`
 - **Functionality:** Disables text selection, providing another layer of protection against direct content copying.
+
+---
+
+### 7. Hide Content During Print 🖨️
+
+TTo prevent content from being printed, a specific style is added for the print media:
+
+- **Execution:** `const printStyle = document.createElement("style");
+printStyle.type = "text/css";
+printStyle.media = "print";
+printStyle.innerHTML = "* { display: none !important; }";
+document.head.appendChild(printStyle);`
+- **Functionality:** Hides all content during printing, ensuring that nothing from the page is printed.
 
 ---
 
