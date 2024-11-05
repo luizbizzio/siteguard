@@ -39,7 +39,6 @@ document.addEventListener("contextmenu", function(e) {
 
 // 5. Block Key Combinations
 document.onkeydown = c => {
-    // Check if any of the blocked key combinations are pressed
     [{
         ctrl: !0,
         shift: !0,
@@ -47,19 +46,26 @@ document.onkeydown = c => {
     }, {
         ctrl: !0,
         shift: !0,
-        code: "KeyJ" //JavaScript console
+        code: "KeyJ" // JavaScript console
     }, {
         ctrl: !0,
         shift: !0,
-        code: "KeyV" // Console
+        code: "KeyV" // Paste
     }, {
-        ctrl: !0, 
-        code: "KeyU" // Source
+        ctrl: !0,
+        code: "KeyU" // View source
     }, {
         code: "F12" // Developer Tools
+    }, {
+        ctrl: !0,
+        code: "KeyP" // Print
+    }, {
+        ctrl: !0,
+        code: "KeyS" // Save
     }].some(e => !!e.ctrl === c.ctrlKey && !!e.shift === c.shiftKey && c.code === e.code)
-    && c.preventDefault()
+    && c.preventDefault();
 };
+
 
 // 6. Prevent text selection on the entire body of the document
 document.addEventListener("DOMContentLoaded", function() {
