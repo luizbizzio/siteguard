@@ -1,14 +1,5 @@
 setTimeout(function(){document.open(),document.write(`<!DOCTYPE html>
 <html lang="en">
-<script>
-/*!-----------------------------------------------------------------------------
- * SiteGuard - Version 1.1.2
- * License: MIT
- * Repository: https://github.com/luizbizzio/siteguard
- * Published: 2024-11-05
- * -------------------------------------------------------------------------- */
-function af(){var e=!1;setInterval(function(){var t=performance.now();console.profile(),console.profileEnd(),console.clear&&console.clear(),performance.now()-t>10&&!e&&(e=!0,document.documentElement.innerHTML="",location.reload(!0))},1e3)}af(),document.addEventListener("dragstart",e=>e.preventDefault()),document.addEventListener("auxclick",e=>1===e.button&&(e.stopPropagation(),e.preventDefault())),document.addEventListener("contextmenu",function(e){e.preventDefault()}),document.onkeydown=e=>[{ctrl:!0,shift:!0,code:"KeyI"},{ctrl:!0,shift:!0,code:"KeyJ"},{ctrl:!0,shift:!0,code:"KeyV"},{ctrl:!0,code:"KeyU"},{code:"F12"}].some(t=>!!t.ctrl===e.ctrlKey&&!!t.shift===e.shiftKey&&e.code===t.code)&&e.preventDefault(),document.addEventListener("DOMContentLoaded",function(){document.body.style.userSelect="none"});
-</script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
