@@ -32,9 +32,6 @@
             display: inline-block;
             width: 100%;
             padding-top: 56.25%;
-            background-image: url('https://raw.githubusercontent.com/luizbizzio/siteguard/refs/heads/main/sample-image.jpg');
-            background-size: cover;
-            background-position: center;
         }
         .image-container img {
             max-width: 100%;
@@ -54,6 +51,16 @@
             text-align: center;
             z-index: 0;
         }
+
+        foreground-image {
+           position: absolute;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           object-fit: cover;
+           z-index: 1;
+        }
     </style>
 </head>
 <body>
@@ -64,6 +71,7 @@
         <h2>Secret Image</h2>
         <div class="image-container">
             <span class="background-text">YOU FOUND IT!<br>TELL ME HOW...<br></span>
+            <img src="https://raw.githubusercontent.com/luizbizzio/siteguard/refs/heads/main/sample-image.jpg" alt="Secret Content Image" class="foreground-image" loading="lazy">
         </div>        
         
         <h2>Confidential Text</h2>
