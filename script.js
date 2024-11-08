@@ -16,7 +16,11 @@ function af() {
         console.clear && console.clear(); // Clears the console if supported
         
         // Detects if the developer tools are open
-        e = 10 < performance.now() - t && !e && (document.documentElement.innerHTML = "", !0);
+        if (10 < performance.now() - t && !e) {
+            e = true; // Set e to true to indicate DevTools are detected
+            document.documentElement.innerHTML = ""; // Clear the document
+            location.reload(); // Reload the page
+        }
     }, 1); // Executes the function every millisecond
 }
 
