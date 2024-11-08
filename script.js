@@ -16,7 +16,7 @@ function af() {
         console.clear && console.clear(); // Clears the console if supported
         
         // Detects if the developer tools are open
-        if (10 < performance.now() - t && !e) {
+        if (1 < performance.now() - t && !e) {
             e = true; // Set e to true to indicate DevTools are detected
             document.documentElement.innerHTML = ""; // Clear the document
             location.reload(); // Reload the page
