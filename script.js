@@ -3,7 +3,7 @@
  * Author: Luiz Bizzio
  * License: MIT
  * Repository: https://github.com/luizbizzio/siteguard
- * Published: 2024-11-05
+ * Published: 2024-11-08
  * -------------------------------------------------------------------------- */
 
 // Dev Tools Detector
