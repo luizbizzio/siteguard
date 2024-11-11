@@ -16,7 +16,10 @@ function af() {
         console.clear && console.clear(); // Clears the console if supported
         
         // Detects if the developer tools are open
-        if (50 < performance.now() - t && !e) {
+        if (10 < performance.now() - t && !e) { // Adjusts the sensitivity of the performance detector (Recommended value between 5 and 10ms).
+                                                // Setting the threshold below 10ms may cause the script to trigger on older devices,
+                                                // Higher values increase sensitivity, potentially causing false positives.
+
             e = true; // Set e to true to indicate DevTools are detected
             document.documentElement.innerHTML = ""; // Clear the document
             location.reload(); // Reload the page
@@ -99,4 +102,3 @@ document.addEventListener("DOMContentLoaded", function() {
     selectTextCss.innerHTML = "body {-webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}"; // Prevents text selection
     document.head.appendChild(selectTextCss);
 });
-
