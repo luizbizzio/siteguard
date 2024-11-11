@@ -254,18 +254,18 @@ These combined functions form a comprehensive barrier against unauthorized conte
 
 # ⚠ Adjusting Sensitivity for Developer Tools Detection ⚠
 
-The provided code is a technique to detect if the **developer tools** are open in the browser. It works by monitoring script execution and calculating performance time with `performance.now()`. When the execution time exceeds a set threshold, the script is triggered, and it can be inferred that the developer tools are open.
+The code provided helps detect when the **developer tools** are open in the browser. It does this by tracking script performance using `performance.now()`. If the script takes longer than a certain amount of time to execute, it assumes that the developer tools are open and triggers an action.
 
-The key here is to **adjust the sensitivity** of the detection to balance between **detection accuracy** and **compatibility across devices**. Adjustments need to be made based on the expected performance of the user's devices and the type of page being accessed.
+The key to making this system work well is to **adjust the sensitivity** of the detection. You want to find a balance between **accuracy** in detecting the developer tools and **compatibility** with different devices. This adjustment depends on the **performance** of the user's device and the **type of web page** being viewed.
 
 ---
 
 ## How Does the Detection Work? 🤔
 
-The detection relies on the **milliseconds** (`ms`) value compared to the script's execution time. This value defines the **sensitivity threshold** of the detector:
+The detection is based on the **milliseconds** (`ms`) it takes to execute a script. The difference between the script’s expected execution time and the actual time defines the **sensitivity threshold**:
 
-- **Smaller values**: Increase sensitivity, making the script trigger faster in detecting developer tools. However, this may lead to **false positives** on slower devices.
-- **Larger values**: Decrease sensitivity, increasing **compatibility** with slower devices, but may reduce **effectiveness** of detection on faster devices.
+- **Smaller values**: These make the system more sensitive, so it detects developer tools faster. However, it could trigger **false positives** on slower devices.
+- **Larger values**: These reduce sensitivity, improving **compatibility** with slower devices but may not detect developer tools as quickly on faster devices.
 
 ### Recommended Sensitivity ⚖️
 
@@ -275,15 +275,15 @@ The sensitivity can be adjusted between **5ms to 10ms** to ensure effective dete
 
 ## CPU Performance Limitation 🖥️
 
-CPU performance can also be used to dynamically adjust the sensitivity of detection. Below, we show how CPU throttling (limiting CPU usage) impacts performance and detection sensitivity. This was tested by artificially limiting the CPU usage to specific percentages to observe how the script responds.
+You can also adjust the sensitivity based on the **CPU performance** of the device. Below, we demonstrate how **CPU throttling** (limiting CPU usage) affects detection sensitivity. We performed tests by intentionally reducing the CPU usage to certain percentages to see how the detection reacts.
 
-| **CPU Usage (Throttle Test)**   | **Detection Limit (ms)**  | **Behavior**                               | **Compability**      
-|-----------------|---------------------------|--------------------------------------------|---------------------------------------|
-| **8%**          | 150ms                     | Works on low-load devices. For newer devices the detection may not trigger. | ❌ |
-| **17%**         | 10ms                      | Good balance between detection and compatibility. | ✅ |
-| **27%**         | 5ms                       | Sensitive, unlikely to generate false positives on older devices. | ✅ |
-| **50%**         | 2ms                       | Very sensitive, with a small risk of false positives. | ✅ |
-| **100%**        | 1ms                       | Extremely sensitive, false positives on low-performance devices. | ❌ |
+| **CPU Usage (Throttle Test)**   | **Detection Limit (ms)**  | **Behavior**                               | **Compatibility**      
+|-----------------------------|---------------------------|--------------------------------------------|------------------------|
+| **8%**                       | 150ms                     | Works well for low-load devices. May not trigger on newer devices. | ❌ |
+| **17%**                      | 10ms                      | A good balance between detection speed and device compatibility. | ✅ |
+| **27%**                      | 5ms                       | Sensitive enough, but won’t generate false positives on older devices. | ✅ |
+| **50%**                      | 2ms                       | Very sensitive, but has a small risk of false positives. | ✅ |
+| **100%**                     | 1ms                       | Extremely sensitive, may cause false positives on lower-performance devices. | ❌ |
 
 ---
 
@@ -291,37 +291,37 @@ CPU performance can also be used to dynamically adjust the sensitivity of detect
 
 ### How to Adjust Sensitivity for Your Site
 
-The ideal sensitivity value depends on the **type of site** and the **expected performance** of users' devices:
+The ideal sensitivity for your site depends on the **type of site** and the **expected performance** of users' devices:
 
-- **Lightweight Sites**: 🚀 If the page is simple and quick to load, **lower values (2ms)** can be effective for fast detection of developer tools.
-- **Heavy Sites**: 🏋️ For more complex pages with heavy scripts, **higher values (5ms or more)** may be more appropriate to ensure that detection doesn't interfere with performance.
+- **Lightweight Sites**: 🚀 If your site is simple and loads quickly, you can use **lower values (2ms)** for fast detection of developer tools.
+- **Heavy Sites**: 🏋️ For more complex sites with many scripts, it’s better to use **higher values (5ms or more)** to ensure detection doesn’t impact performance.
 
-Keep in mind that sensitivity may need to be adjusted based on user behavior across different devices.
+You should also consider adjusting sensitivity based on how users interact with the site on different devices.
 
 ---
 
 ## Differences Between Browsers and Processors 🌐
 
-Detection performance also depends on the **browser** and **processor** used. During tests, it was observed that sensitivity may vary depending on the device:
-(Only works on Chromium-based browsers)
+Detection performance also depends on the **browser** and **processor** the user has. We found that **sensitivity** can vary between devices, and this method **only works on Chromium-based browsers** (like Chrome, Edge, Opera, etc.).
 
-- **Devices with slower CPUs** (e.g., older processors) may require higher `ms` values (10ms or more) to avoid detection failures.
-- **Devices with faster CPUs** (e.g., newer processors) may allow lower values (5ms or even 2ms) for more effective detection.
+- **Devices with slower CPUs** (like older processors) may need higher `ms` values (10ms or more) to avoid failing detection.
+- **Devices with faster CPUs** (newer processors) can allow **lower values** (such as 5ms or even 2ms) to make detection more effective.
 
-In tests using **Opera GX** (version `114.0.5282.159`) and the **Ryzen 5 5500** processor, performance was monitored with different CPU configurations. The code's behavior was adjusted based on CPU usage and performance limitations of each device.
+In tests using **Opera GX** (version `114.0.5282.159`) with a **Ryzen 5 5500** processor, the code’s behavior was tested with different CPU limits to adjust its sensitivity based on performance.
 
 ---
 
 ## Conclusion 🎯
 
-Detecting **developer tools** should be adjusted based on the type of site and the configuration of users' devices. When choosing a sensitivity value, it's important to **balance detection effectiveness** and **compatibility with slower devices**.
+Detecting **developer tools** should be tailored based on the **type of site** and the **device configuration** of the user. When choosing the right sensitivity value, you need to **balance detection effectiveness** with **device compatibility**.
 
 ### Recommendation ✅
 
-- For **lightweight sites**, values between **2ms** and **5ms** work well for quick detection.
-- For **heavier sites**, values between **5ms and 10ms** may be more effective in reducing the impact on performance without compromising detection.
+- For **lightweight sites**, values between **2ms** and **5ms** work best for fast detection.
+- For **heavier sites**, values between **5ms** and **10ms** are better to reduce performance impact while keeping detection effective.
 
-Adjust the sensitivity value as needed for your site and perform **testing on different devices** to ensure the best user experience.
+Be sure to **test the sensitivity settings** on different devices to provide the best user experience for everyone.
+
 
 
 
