@@ -248,11 +248,7 @@ document.head.appendChild(printStyle);`
 
 ---
 
-These combined functions form a comprehensive barrier against unauthorized content access and manipulation, ideal for safeguarding sensitive or proprietary content on web pages.
-
----
-
-# ⚠ Adjusting Sensitivity for Developer Tools Detection ⚠
+## ⚠ Adjusting Sensitivity for Developer Tools Detection ⚠
 
 The code provided helps detect when the **developer tools** are open in the browser. It does this by tracking script performance using `performance.now()`. If the script takes longer than a certain amount of time to execute, it assumes that the developer tools are open and triggers an action.
 
@@ -322,7 +318,7 @@ Detecting **developer tools** should be tailored based on the **type of site** a
 
 Be sure to **test the sensitivity settings** on different devices to provide the best user experience for everyone.
 
-
+---
 
 
 ## 📄 License
