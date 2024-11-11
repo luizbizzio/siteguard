@@ -45,14 +45,19 @@ SiteGuard is your ultimate **JavaScript** tool for protecting web content! Safeg
 function af(){var e=!1;setInterval(function(){var t=performance.now();console.profile(),console.profileEnd(),console.clear&&console.clear(),10<performance.now()-t&&!e&&(e=!0,document.documentElement.innerHTML="",location.reload())},1)}af(),document.addEventListener("dragstart",e=>e.preventDefault()),document.addEventListener("auxclick",e=>{1===e.button&&(e.stopPropagation(),e.preventDefault())}),document.addEventListener("contextmenu",function(e){e.preventDefault()}),document.onkeydown=e=>{[{ctrl:!0,shift:!0,code:"KeyI"},{ctrl:!0,shift:!0,code:"KeyJ"},{ctrl:!0,shift:!0,code:"KeyV"},{ctrl:!0,shift:!0,code:"KeyC"},{ctrl:!0,code:"KeyU"},{ctrl:!0,code:"KeyP"},{ctrl:!0,code:"KeyS"},{ctrl:!0,code:"KeyJ"},{ctrl:!0,code:"KeyF"},{code:"F12"}].some(t=>!!t.ctrl===e.ctrlKey&&!!t.shift===e.shiftKey&&e.code===t.code)&&e.preventDefault()},document.addEventListener("DOMContentLoaded",function(){document.body.style.setProperty("user-select","none","important");let e=document.createElement("style");e.type="text/css",e.media="print",e.innerHTML="* { display: none !important; }",document.head.appendChild(e);let t=document.createElement("style");t.type="text/css",t.innerHTML="body {-webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}",document.head.appendChild(t)});</script>
 
 ```
+
+<br>
+
+---
+
+<br>
 <br>
 
 ### **IMPORTANT ⚠** 
 Ensure this script is embedded directly at the very beginning of the `<html>` tag, before the `<head>` tag. This prevents users from easily blocking the script and ensures no traces remain if content is auto-cleared.
 
-<br>
-
 ---
+
 <br>
 
 ### Explained Script Version 📝
@@ -244,6 +249,79 @@ document.head.appendChild(printStyle);`
 ---
 
 These combined functions form a comprehensive barrier against unauthorized content access and manipulation, ideal for safeguarding sensitive or proprietary content on web pages.
+
+---
+
+# ⚠ Adjusting Sensitivity for Developer Tools Detection ⚠
+
+The provided code is a technique to detect if the **developer tools** are open in the browser. It works by monitoring script execution and calculating performance time with `performance.now()`. When the execution time exceeds a set threshold, the script is triggered, and it can be inferred that the developer tools are open.
+
+The key here is to **adjust the sensitivity** of the detection to balance between **detection accuracy** and **compatibility across devices**. Adjustments need to be made based on the expected performance of the user's devices and the type of page being accessed.
+
+---
+
+## How Does the Detection Work? 🤔
+
+The detection relies on the **milliseconds** (`ms`) value compared to the script's execution time. This value defines the **sensitivity threshold** of the detector:
+
+- **Smaller values**: Increase sensitivity, making the script trigger faster in detecting developer tools. However, this may lead to **false positives** on slower devices.
+- **Larger values**: Decrease sensitivity, increasing **compatibility** with slower devices, but may reduce **effectiveness** of detection on faster devices.
+
+### Recommended Sensitivity ⚖️
+
+The sensitivity can be adjusted between **5ms to 10ms** to ensure effective detection, without negatively affecting page performance on different devices.
+
+---
+
+## CPU Performance Limitation 🖥️
+
+CPU performance can also be used to dynamically adjust the sensitivity of detection. Below, we show how CPU throttling (limiting CPU usage) impacts performance and detection sensitivity. This was tested by artificially limiting the CPU usage to specific percentages to observe how the script responds.
+
+| **CPU Usage (Throttle Test)**   | **Detection Limit (ms)**  | **Behavior**                               | **Compability**      
+|-----------------|---------------------------|--------------------------------------------|---------------------------------------|
+| **8%**          | 150ms                     | Works on low-load devices. For newer devices the detection may not trigger. | ❌ |
+| **17%**         | 10ms                      | Good balance between detection and compatibility. | ✅ |
+| **27%**         | 5ms                       | Sensitive, unlikely to generate false positives on older devices. | ✅ |
+| **50%**         | 2ms                       | Very sensitive, with a small risk of false positives. | ✅ |
+| **100%**        | 1ms                       | Extremely sensitive, false positives on low-performance devices. | ❌ |
+
+---
+
+## Adjusting Sensitivity Based on Need 🔧
+
+### How to Adjust Sensitivity for Your Site
+
+The ideal sensitivity value depends on the **type of site** and the **expected performance** of users' devices:
+
+- **Lightweight Sites**: 🚀 If the page is simple and quick to load, **lower values (2ms)** can be effective for fast detection of developer tools.
+- **Heavy Sites**: 🏋️ For more complex pages with heavy scripts, **higher values (5ms or more)** may be more appropriate to ensure that detection doesn't interfere with performance.
+
+Keep in mind that sensitivity may need to be adjusted based on user behavior across different devices.
+
+---
+
+## Differences Between Browsers and Processors 🌐
+
+Detection performance also depends on the **browser** and **processor** used. During tests, it was observed that sensitivity may vary depending on the device:
+(Only works on Chromium-based browsers)
+
+- **Devices with slower CPUs** (e.g., older processors) may require higher `ms` values (10ms or more) to avoid detection failures.
+- **Devices with faster CPUs** (e.g., newer processors) may allow lower values (5ms or even 2ms) for more effective detection.
+
+In tests using **Opera GX** (version `114.0.5282.159`) and the **Ryzen 5 5500** processor, performance was monitored with different CPU configurations. The code's behavior was adjusted based on CPU usage and performance limitations of each device.
+
+---
+
+## Conclusion 🎯
+
+Detecting **developer tools** should be adjusted based on the type of site and the configuration of users' devices. When choosing a sensitivity value, it's important to **balance detection effectiveness** and **compatibility with slower devices**.
+
+### Recommendation ✅
+
+- For **lightweight sites**, values between **2ms** and **5ms** work well for quick detection.
+- For **heavier sites**, values between **5ms and 10ms** may be more effective in reducing the impact on performance without compromising detection.
+
+Adjust the sensitivity value as needed for your site and perform **testing on different devices** to ensure the best user experience.
 
 
 
