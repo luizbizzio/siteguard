@@ -3,7 +3,7 @@
 **Version:** 1.1.2  
 **Author:** Luiz Bizzio  
 **License:** MIT  
-**Repository:** [GitHub - SiteGuard](https://github.com/luizbizzio/siteguard)  
+**Repository:** [GitHub - SiteGuard](https://github.com/luizbizzio/siteguard)
 **Published:** 2024-11-08
 
 ## Overview 🚀
