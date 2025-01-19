@@ -12,7 +12,7 @@ SiteGuard is your ultimate **JavaScript** tool for protecting web content! Safeg
 
 ## Test the Features! 🕵️‍♂️
 
-[**Try to Steal This Content!** 😈](https://luizbizzio.github.io/siteguard-test/)
+[**Try to Steal This Content!** 😈](https://siteguard.pages.dev/)
 
 **Challenge:** Test the SiteGuard's capabilities! Try to copy, save, or inspect the content on this page. Think you can bypass it? Give it a shot! 🔒
 
