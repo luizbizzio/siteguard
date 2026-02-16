@@ -38,7 +38,7 @@ SiteGuard is your ultimate **JavaScript** tool for protecting web content! Safeg
 <script>
 /*!-----------------------------------------------------------------------------
  * SiteGuard - Version 1.1.2
- * License: MIT
+ * License: Apache License Version 2.0
  * Repository: https://github.com/luizbizzio/siteguard
  * Published: 2024-11-08
  * -------------------------------------------------------------------------- */
@@ -68,7 +68,7 @@ Ensure this script is embedded directly at the very beginning of the `<html>` ta
 /*!-----------------------------------------------------------------------------
  * SiteGuard - Version 1.1.2
  * Author: Luiz Bizzio
- * License: MIT
+ * License: Apache License Version 2.0
  * Repository: https://github.com/luizbizzio/siteguard
  * Published: 2024-11-08
  * -------------------------------------------------------------------------- */
@@ -324,4 +324,4 @@ Be sure to **test the sensitivity settings** on different devices to provide the
 
 ## License 📄
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the Apache License Version 2.0 - see the [LICENSE](LICENSE) file for details.
