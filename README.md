@@ -2,7 +2,7 @@
 
 **Version:** 1.1.2  
 **Author:** Luiz Bizzio  
-**License:** MIT  
+**License:** Apache License Verison 2.0
 **Repository:** [GitHub - SiteGuard](https://github.com/luizbizzio/siteguard)
 **Published:** 2024-11-08
 
