@@ -8,7 +8,10 @@
 
 ## Overview 🚀
 
-SiteGuard is your ultimate **JavaScript** tool for protecting web content! Safeguard your intellectual property by preventing unauthorized access and interactions on your website. With SiteGuard, you can maintain control over your content and deter unwanted actions.
+SiteGuard is a small client-side JavaScript deterrent.
+It is designed to discourage casual inspection, copying, and interaction with website content using browser-level restrictions.
+
+This project does **not provide real security** and should not be treated as a protection mechanism against bots, scrapers, or determined users.
 
 ## Test the Features! 🕵️‍♂️
 
