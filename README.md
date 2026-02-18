@@ -2,7 +2,7 @@
 
 **Version:** 1.1.2  
 **Author:** Luiz Bizzio  
-**License:** Apache License Verison 2.0
+**License:** Apache License Version 2.0
 **Repository:** [GitHub - SiteGuard](https://github.com/luizbizzio/siteguard)
 **Published:** 2024-11-08
 
@@ -13,15 +13,22 @@ It is designed to discourage casual inspection, copying, and interaction with we
 
 This project does **not provide real security** and should not be treated as a protection mechanism against bots, scrapers, or determined users.
 
-## Test the Features! 🕵️‍♂️
+## Demo 🕵️‍♂️
 
-[**Try to Steal This Content!** 😈](https://siteguard.pages.dev/)
+Live demo: https://siteguard.pages.dev/
 
-**Challenge:** Test the SiteGuard's capabilities! Try to copy, save, or inspect the content on this page. Think you can bypass it? Give it a shot! 🔒
+This demo shows how the script behaves against casual actions (right click, selection, common shortcuts).
+Advanced users can still bypass it.
 
-## Features 🌟
+## What this is NOT
+- Not a security solution
+- Not bot protection
+- Not a WAF replacement
+- Not access control
 
-| Feature | Description | Status |
+## Browser-level restrictions 🌟
+
+| Restriction | Description | Status |
 | ------- | ----------- | ------ |
 | 📅 Dev Tools Detection | Monitors for Developer Tools and clears content if detected. | ✅ Active |
 | 🔍 Prevent Dragging Elements | Disables dragging of elements to maintain content integrity. | ✅ Active |
@@ -35,7 +42,7 @@ This project does **not provide real security** and should not be treated as a p
 
 ### Minified Script Version (Recommended) ✅
 
- This lightweight, minified version is ideal for most use cases. It’s streamlined and efficient, offering full protection without additional comments.
+ This lightweight, minified version is recommended for most cases. It applies the same browser-level deterrents in a smaller form.
 
 ```html
 <script>
@@ -58,7 +65,7 @@ function af(){var e=!1;setInterval(function(){var t=performance.now();console.pr
 <br>
 
 ### **IMPORTANT ⚠** 
-Ensure this script is embedded directly at the very beginning of the `<html>` tag, before the `<head>` tag. This prevents users from easily blocking the script and ensures no traces remain if content is auto-cleared.
+Ensure this script is embedded directly at the very beginning of the `<html>` tag, before the `<head>` tag, so it applies restrictions before the page becomes interactive. Advanced users can still bypass or disable it.
 
 ---
 
@@ -189,7 +196,7 @@ The main function, `af()`, continuously monitors for Dev Tools by assessing perf
 - **Method:** Utilizes `console.profile()` and `console.profileEnd()` to measure code execution time.
 - **Action Triggered:** If execution time exceeds 10ms, it assumes Dev Tools are open and clears the entire `document.documentElement`.
 
-his approach effectively monitors Dev Tools access by checking for performance delays that typically occur when Dev Tools are active, all without impacting normal user interactions.
+This approach effectively monitors Dev Tools access by checking for performance delays that typically occur when Dev Tools are active, all without impacting normal user interactions.
 
 ---
 
@@ -321,6 +328,20 @@ Detecting **developer tools** should be tailored based on the **type of site** a
 - For **heavier sites**, values between **5ms** and **10ms** are better to reduce performance impact while keeping detection effective.
 
 Be sure to **test the sensitivity settings** on different devices to provide the best user experience for everyone.
+
+## When this makes sense
+
+- Low-risk websites
+- Landing pages and demos
+- Discouraging casual users from copying content
+- Situations where UX restrictions are acceptable
+
+## When this does NOT make sense
+
+- Content that requires real protection
+- Applications with authenticated users
+- High-value intellectual property
+- Environments that require accessibility or SEO guarantees
 
 ---
 
