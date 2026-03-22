@@ -1,10 +1,11 @@
-# SiteGuard 🛡️
-
-**Version:** 1.1.2  
-**Author:** Luiz Bizzio  
-**License:** Apache License Version 2.0
-**Repository:** [GitHub - SiteGuard](https://github.com/luizbizzio/siteguard)
-**Published:** 2024-11-08
+<h1 align="center">SiteGuard 🛡️</h1>
+<p align="center">
+Version: 1.0.0<br>
+Author: Luiz Bizzio<br>
+License: Apache License Version 2.0<br>
+https://github.com/luizbizzio/siteguard<br>
+Published: 2024-11-08
+</p>
 
 ## Overview 🚀
 
@@ -47,7 +48,7 @@ Advanced users can still bypass it.
 ```html
 <script>
 /*!-----------------------------------------------------------------------------
- * SiteGuard - Version 1.1.2
+ * SiteGuard - Version 1.0.0
  * License: Apache License Version 2.0
  * Repository: https://github.com/luizbizzio/siteguard
  * Published: 2024-11-08
@@ -76,7 +77,7 @@ Ensure this script is embedded directly at the very beginning of the `<html>` ta
 ```html
 <script>
 /*!-----------------------------------------------------------------------------
- * SiteGuard - Version 1.1.2
+ * SiteGuard - Version 1.0.0
  * Author: Luiz Bizzio
  * License: Apache License Version 2.0
  * Repository: https://github.com/luizbizzio/siteguard
