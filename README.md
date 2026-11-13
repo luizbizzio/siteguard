@@ -16,7 +16,7 @@ This project does **not provide real security** and should not be treated as a p
 
 ## Demo 🕵️‍♂️
 
-Live demo: https://siteguard.pages.dev/
+Live demo: https://siteguard.luizbizzio.com/
 
 This demo shows how the script behaves against casual actions (right click, selection, common shortcuts).
 Advanced users can still bypass it.
