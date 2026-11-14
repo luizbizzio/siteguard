@@ -1,41 +1,41 @@
-# SiteGuard
+# SiteGuard 🛡️
 
-**A lightweight JavaScript deterrent for manual scraping and casual copying.**
+**Make basic content copying and manual inspection harder with a small JavaScript script.**
 
-[Live demo](https://siteguard.luizbizzio.com/) · [JavaScript source](./siteguard.js) · [Demo files](./demo/) · [License](./LICENSE)
+[Live Demo](https://siteguard.luizbizzio.com/) · [Source Code](./siteguard.js) · [License](./LICENSE)
 
-SiteGuard runs in the browser and restricts common actions used to copy or inspect a page. Its goal is to make simple manual copying less convenient.
+## What is SiteGuard?
 
-**Current version:** `1.1.2`
+SiteGuard is a lightweight, client-side JavaScript tool that limits common browser actions. It is made for website owners who want to discourage casual copying of text, images, and other page content.
 
-## Live demo
+It runs directly in the browser. There are no dependencies, accounts, or build tools.
 
-Try SiteGuard at **https://siteguard.luizbizzio.com/**.
+SiteGuard adds friction. It does not make public content private or impossible to copy.
 
-The demo lets you test right-click, dragging, selection, and keyboard shortcuts. It also includes a local event monitor and a short explanation of every part of the script.
+## Features
 
-All demo files are in [`demo/`](./demo/). The demo is a standalone static site, with its page content created by [`demo/loadContent.js`](./demo/loadContent.js).
+- **Right-click protection:** Stops the normal browser context menu.
+- **Drag protection:** Prevents dragging images and other elements.
+- **Middle-click protection:** Cancels actions from the middle mouse button.
+- **Keyboard restrictions:** Blocks selected shortcuts, including `F12`, `Ctrl+U`, `Ctrl+P`, `Ctrl+S`, `Ctrl+J`, `Ctrl+F`, and `Ctrl+Shift+I/J/V/C`.
+- **Text selection:** Uses CSS rules to disable normal text highlighting.
+- **Print protection:** Hides page content when a visitor tries to print it.
+- **DevTools timing check:** Measures console profiling time to look for possible browser inspection.
 
 ## How it works
 
-| Browser action | What SiteGuard does |
-| --- | --- |
-| Right-click | Cancels the browser context menu (`contextmenu`). |
-| Dragging | Stops normal element dragging (`dragstart`). |
-| Middle-click | Cancels the middle mouse button action (`auxclick`). |
-| Keyboard shortcuts | Blocks selected `Ctrl` and `Ctrl + Shift` shortcuts, plus `F12`. |
-| Text selection | Applies `user-select: none` and related CSS rules. |
-| Printing | Hides page content with a print-only CSS rule. |
-| DevTools timing | Checks console profiling time and reloads if it passes a threshold. |
+SiteGuard uses browser event listeners such as `contextmenu`, `dragstart`, `auxclick`, and `keydown`. When it detects a restricted action, it calls `preventDefault()` to cancel the normal browser behavior.
 
-The original script requests a profiling check every **1 ms**. If a check takes longer than **10 ms**, it clears the document and reloads the page. This is a timing-based check, so results can change with the browser and device.
+It also adds CSS rules after the page is loaded. These rules disable text selection and hide the page in print mode.
 
-**Demo difference:** To keep the live monitor usable, the demo requests a timing check every **250 ms** and logs a slow check instead of clearing and reloading the page. It is a demonstration of the behavior, not a direct copy of the full original script.
+For its DevTools check, the original script requests a timer every **1 ms** and measures the time taken by `console.profile()` and `console.profileEnd()`. If this takes longer than **10 ms**, the script clears the document and reloads the page.
 
-## Install
+This is a timing-based guess, not a reliable way to detect DevTools. Browser speed and device performance can affect the result.
 
-1. Copy [`siteguard.js`](./siteguard.js) into your website.
-2. Include the script in the HTML `<head>`:
+## Quick start
+
+1. Download [`siteguard.js`](./siteguard.js) and add it to your website.
+2. Load it in your HTML:
 
 ```html
 <head>
@@ -43,48 +43,28 @@ The original script requests a profiling check every **1 ms**. If a check takes 
 </head>
 ```
 
-Adjust the file path if the script is stored in another folder. For earlier browser restrictions, load the script before the rest of the interactive page.
+Update the path if needed. Load the script early so the event listeners start as soon as possible.
 
-SiteGuard changes normal browser interactions. Test your site carefully, especially keyboard navigation, text selection, printing, accessibility, and performance.
+**Current version:** `1.1.2`
 
-## Repository
+## Live demo
 
-```text
-siteguard/
-├── siteguard.js       Original JavaScript (v1.1.2)
-├── demo/              Static demonstration website
-│   ├── index.html
-│   ├── loadContent.js
-│   ├── favicon.svg
-│   ├── favicon.png
-│   ├── social-preview.jpg
-│   ├── robots.txt
-│   └── sitemap.xml
-├── LICENSE
-└── README.md
-```
+**[Try SiteGuard](https://siteguard.luizbizzio.com/)**
 
-## Deploy the demo with Cloudflare Pages
+The demo lets you test the restrictions yourself, see blocked events in a live monitor, and read an explanation of each part of the original script.
 
-The demo needs no framework, build tool, or server code.
+The demo uses a **250 ms** timing interval and shows a warning instead of reloading the page. This keeps the demo usable while you test it.
 
-| Setting | Value |
-| --- | --- |
-| GitHub repository | `luizbizzio/siteguard` |
-| Production branch | `main` |
-| Framework preset | None |
-| Root directory | Repository root (default) |
-| Build command | Leave blank or use `exit 0` |
-| Build output directory | `demo` |
+## Before using it
 
-The `demo/` directory becomes the root of the deployed website. This keeps the current demo URLs, including `/favicon.svg` and `/social-preview.jpg`, working.
+SiteGuard is designed to stop **simple manual actions**, not automated scraping or determined users. It cannot protect content that has already been sent to a visitor's browser.
 
-## Notes
+Some restrictions can also affect normal users. They may block useful shortcuts, printing, text selection, or accessibility features. The frequent timing check may affect performance, and false positives may cause page reloads.
 
-SiteGuard is meant to discourage **casual manual** copying. It does not make public content private or stop a determined scraper. Do not use browser restrictions as a replacement for server-side access controls.
+**Test the script on your website and in the browsers you support before using it in production.** For real content protection, use server-side access controls.
 
 ## License
 
-Apache License 2.0. See [LICENSE](./LICENSE).
+SiteGuard is released under the [Apache License 2.0](./LICENSE).
 
 Created by [Luiz Bizzio](https://github.com/luizbizzio).
