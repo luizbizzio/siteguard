@@ -4,6 +4,10 @@
 
 [Live Demo](https://siteguard.luizbizzio.com/) · [Source Code](./siteguard.js) · [License](./LICENSE)
 
+<p align="center">
+  <img src="./demo/siteguard-demo.png" alt="SiteGuard Demo" width="1200">
+</p>
+
 ## What is SiteGuard?
 
 SiteGuard is a lightweight, client-side JavaScript tool that limits common browser actions. It is made for website owners who want to discourage casual copying of text, images, and other page content.
@@ -34,18 +38,23 @@ This is a timing-based guess, not a reliable way to detect DevTools. Browser spe
 
 ## Quick start
 
-1. Download [`siteguard.js`](./siteguard.js) and add it to your website.
-2. Load it in your HTML:
+This lightweight, minified version is recommended for most cases. It applies the same browser-level deterrents in a smaller form.
 
 ```html
-<head>
-  <script src="/siteguard.js"></script>
-</head>
+<script>
+/*!-----------------------------------------------------------------------------
+ * SiteGuard - Version 1.1.2
+ * Author: Luiz Bizzio
+ * License: Apache License Version 2.0
+ * Repository: https://github.com/luizbizzio/siteguard
+ * Published: 2024-11-08
+ * -------------------------------------------------------------------------- */
+function af(){var e=!1;setInterval(function(){var t=performance.now();console.profile(),console.profileEnd(),console.clear&&console.clear(),10<performance.now()-t&&!e&&(e=!0,document.documentElement.innerHTML="",location.reload())},1)}af(),document.addEventListener("dragstart",e=>e.preventDefault()),document.addEventListener("auxclick",e=>{1===e.button&&(e.stopPropagation(),e.preventDefault())}),document.addEventListener("contextmenu",function(e){e.preventDefault()}),document.onkeydown=e=>{[{ctrl:!0,shift:!0,code:"KeyI"},{ctrl:!0,shift:!0,code:"KeyJ"},{ctrl:!0,shift:!0,code:"KeyV"},{ctrl:!0,shift:!0,code:"KeyC"},{ctrl:!0,code:"KeyU"},{ctrl:!0,code:"KeyP"},{ctrl:!0,code:"KeyS"},{ctrl:!0,code:"KeyJ"},{ctrl:!0,code:"KeyF"},{code:"F12"}].some(t=>!!t.ctrl===e.ctrlKey&&!!t.shift===e.shiftKey&&e.code===t.code)&&e.preventDefault()},document.addEventListener("DOMContentLoaded",function(){document.body.style.setProperty("user-select","none","important");const e=document.createElement("style");e.type="text/css",e.media="print",e.innerHTML="* { display: none !important; }",document.head.appendChild(e);const t=document.createElement("style");t.type="text/css",t.innerHTML="body {-webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}",document.head.appendChild(t)});
+</script>
 ```
 
-Update the path if needed. Load the script early so the event listeners start as soon as possible.
-
-**Current version:** `1.1.2`
+> [!WARNING]
+> Place the SiteGuard script at the beginning of the `<head>` section, right after `<meta charset="UTF-8">` and before any other JavaScript.
 
 ## Live demo
 
